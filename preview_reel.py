@@ -3,9 +3,9 @@
 （纯 ffmpeg，不需要任何模型；作为 SVD 出片前的即时预览）"""
 import os, sys, glob, subprocess
 
-FF = r"<项目根>/_tools/ffmpeg-master-latest-win64-gpl/bin/ffmpeg.exe"
-IN_DIR = sys.argv[1] if len(sys.argv) > 1 else r"<项目根>/04_关键帧_风格化/_本地试跑_CN_IPA"
-OUT = sys.argv[2] if len(sys.argv) > 2 else r"<项目根>/06_成片/关键帧运镜预览.mp4"
+FF = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_tools/ffmpeg-master-latest-win64-gpl/bin/ffmpeg.exe")
+IN_DIR = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "04_关键帧_风格化/_本地试跑_CN_IPA")
+OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "06_成片/关键帧运镜预览.mp4")
 FPS = 12
 SEG = 3.2      # 每段秒数
 XF = 0.7       # 交叉溶解秒数

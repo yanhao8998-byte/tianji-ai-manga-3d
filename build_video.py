@@ -6,10 +6,10 @@
 """
 import os, sys, glob, subprocess, shutil
 
-FFMPEG = r"<项目根>/_tools/ffmpeg-master-latest-win64-gpl/bin/ffmpeg.exe"
+FFMPEG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_tools/ffmpeg-master-latest-win64-gpl/bin/ffmpeg.exe")
 
-IN_DIR = sys.argv[1] if len(sys.argv) > 1 else r"<项目根>/07_视频片段"
-OUT_MP4 = sys.argv[2] if len(sys.argv) > 2 else r"<项目根>/06_成片/天纪漫剧_SVD样片.mp4"
+IN_DIR = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "07_视频片段")
+OUT_MP4 = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "06_成片/天纪漫剧_SVD样片.mp4")
 OUT_FPS = sys.argv[3] if len(sys.argv) > 3 else "14"
 
 

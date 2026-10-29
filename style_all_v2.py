@@ -7,11 +7,12 @@
 必须在 ComfyUI python_embeded 下运行。
 用法: python style_all_v2.py [--limit N] [--out 目录]
 """
+import os
 import argparse, glob, os, shutil, sys, time
-sys.path.insert(0, r"<项目根>")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import local_style2 as ls2
 
-PROJ = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 IN_DEF = os.path.join(PROJ, "03_关键帧_原图")
 OUT_DEF = os.path.join(PROJ, "04_关键帧_风格化", "_正式输出_v2")
 STATE = os.path.join(PROJ, "04_关键帧_风格化", "_style_v2_state.json")

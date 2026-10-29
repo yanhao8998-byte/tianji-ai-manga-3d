@@ -18,9 +18,10 @@
   04_关键帧_风格化/fNNNNNN.png       对齐后的成品（EbSynth 用）
   04_关键帧_风格化/_弃稿/fNNNNNN/    每帧多出的抽卡备选稿放这里
 """
+import os
 import csv, io, os, shutil, struct, sys
 
-ROOT   = r"<项目根>"
+ROOT = os.path.dirname(os.path.abspath(__file__))
 S3     = os.path.join(ROOT, "03_关键帧_原图")
 S4     = os.path.join(ROOT, "04_关键帧_风格化")
 RAW    = os.path.join(S4, "_下载原始")

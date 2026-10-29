@@ -21,12 +21,13 @@
      --face-denoise 0.35 --face-weight 0.9 --face-size 512
      --tag 名字                  输出文件后缀标记（批量用）
 """
+import os
 import argparse, json, os, shutil, sys, time, urllib.parse, urllib.request, uuid
 
 HOST = "http://127.0.0.1:8189"
 COMFY = r"D:\AI\ComfyUI_windows_portable\ComfyUI"
 CIN = os.path.join(COMFY, "input")
-PROJ = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 REF = os.path.join(PROJ, "00_素材", "参考图_玄鹤先生_秘境.png")
 CKPT = "v1-5-pruned-emaonly.safetensors"
 SUB = "tianji_v2"

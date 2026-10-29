@@ -30,7 +30,7 @@ import urllib.request
 from collections import deque
 from ctypes import wintypes
 
-PROJ = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 STY = os.path.join(PROJ, "04_关键帧_风格化")
 OUTDIR = os.path.join(STY, "_正式输出_v2")
 REFINE_FLAG = os.path.join(STY, "_face_refine_done.json")
@@ -42,8 +42,8 @@ PID_COMFY = os.path.join(PROJ, "_comfy.pid")
 PID_BUILD = os.path.join(PROJ, "_build.pid")
 PID_SELF = os.path.join(PROJ, "_supervisor.pid")
 
-PY_COMFY = r"D:\AI\ComfyUI_windows_portable\python_embeded\python.exe"
-PY_MINI = r"%USERPROFILE%\.workbuddy\binaries\python\versions\3.13.12\python.exe"
+PY_COMFY = os.path.join("D:\\AI", "ComfyUI_windows_portable", "python_embeded", "python.exe")
+PY_MINI = os.path.join(os.environ.get("USERPROFILE", ""), ".workbuddy", "binaries", "python", "versions", "3.13.12", "python.exe")
 COMFY_CWD = r"D:\AI\ComfyUI_windows_portable"
 COMFY_PORT = 8189
 

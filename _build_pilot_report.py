@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """画质试点对比报告：把 _pilot2 的配置矩阵拼成 HTML（图内嵌 base64）"""
+import os
 import base64, glob, io, os, subprocess, sys
 
-PROJ = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 FF = os.path.join(PROJ, "_tools", "ffmpeg-master-latest-win64-gpl", "bin")
 FFMPEG = os.path.join(FF, "ffmpeg.exe")
 SRC_DIR = os.path.join(PROJ, "_pilot2")

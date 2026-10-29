@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 """生成《本地 ComfyUI 试构图对比报告》HTML：原图 vs denoise0.45 vs denoise0.75"""
+import os
 import base64, io, os, subprocess, sys, glob
 
-FFMPEG = r"<项目根>\_tools\ffmpeg-master-latest-win64-gpl\bin\ffmpeg.exe"
-STYLED = r"<项目根>\04_关键帧_风格化"
+FFMPEG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_tools\ffmpeg-master-latest-win64-gpl\bin\ffmpeg.exe")
+STYLED = os.path.join(os.path.dirname(os.path.abspath(__file__)), "04_关键帧_风格化")
 ORIG   = os.path.join(STYLED, "_试跑_待处理")
 D45    = os.path.join(STYLED, "_本地试跑")
 D75    = os.path.join(STYLED, "_本地试跑_高重绘")
-OUT    = r"<项目根>\本地试构图对比报告.html"
+OUT    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "本地试构图对比报告.html")
 
 def to_jpg_b64(png_path, q=82):
     """ffmpeg 解码 PNG → JPEG(q) → base64（走 subprocess 规避中文路径 argv 坑）"""

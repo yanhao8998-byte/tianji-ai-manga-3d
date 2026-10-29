@@ -22,13 +22,14 @@
      --out DIR        输出目录（默认 04_关键帧_风格化/_正式输出）
      --sd 0.70 --sp 0.55 --iw 0.85   控制强度
 """
+import os
 import argparse, json, os, shutil, sys, time, urllib.request, urllib.parse, uuid, glob
 
 HOST  = "http://127.0.0.1:8189"
 COMFY = r"D:\AI\ComfyUI_windows_portable\ComfyUI"
 CIN   = os.path.join(COMFY, "input")
 CKPT  = "v1-5-pruned-emaonly.safetensors"
-PROJ  = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 STY   = os.path.join(PROJ, "04_关键帧_风格化")
 REF   = os.path.join(PROJ, "00_素材", "参考图_玄鹤先生_秘境.png")
 LCM   = "lcm-lora-sdv1-5.safetensors"

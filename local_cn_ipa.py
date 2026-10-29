@@ -7,13 +7,14 @@
 
 用法: python local_cn_ipa.py [denoise] [strength_depth] [strength_pose] [ipa_weight]
 """
+import os
 import json, os, shutil, sys, time, urllib.request, urllib.parse, uuid, glob
 
 HOST  = "http://127.0.0.1:8189"
 COMFY = r"D:\AI\ComfyUI_windows_portable\ComfyUI"
 CIN   = os.path.join(COMFY, "input")
 CKPT  = "v1-5-pruned-emaonly.safetensors"
-PROJ  = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 STY   = os.path.join(PROJ, "04_关键帧_风格化")
 IN_DIR  = os.path.join(STY, "_试跑_待处理")
 OUT_DIR = os.path.join(STY, "_本地试跑_CN_IPA")

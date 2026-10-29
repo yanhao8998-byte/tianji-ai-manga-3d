@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 """生成《本地 AI 管线 v2 实测报告》：原图 vs 纯img2img vs ControlNet+IPAdapter"""
+import os
 import base64, os, subprocess
 
-FFMPEG = r"<项目根>\_tools\ffmpeg-master-latest-win64-gpl\bin\ffmpeg.exe"
-STY    = r"<项目根>\04_关键帧_风格化"
+FFMPEG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_tools\ffmpeg-master-latest-win64-gpl\bin\ffmpeg.exe")
+STY    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "04_关键帧_风格化")
 ORIG   = os.path.join(STY, "_试跑_待处理")
 V1_45  = os.path.join(STY, "_本地试跑")
 V1_75  = os.path.join(STY, "_本地试跑_高重绘")
 V2     = os.path.join(STY, "_本地试跑_CN_IPA")
-OUT    = r"<项目根>\本地AI管线v2实测报告.html"
+OUT    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "本地AI管线v2实测报告.html")
 
 def b64(p, q=82):
     cmd = [FFMPEG, "-y", "-loglevel", "error", "-i", p, "-q:v", str(q), "-f", "image2", "-c:v", "mjpeg", "pipe:1"]

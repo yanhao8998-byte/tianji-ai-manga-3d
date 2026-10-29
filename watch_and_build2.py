@@ -8,12 +8,12 @@
 """
 import os, subprocess, sys, time
 
-PROJ = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 STY = os.path.join(PROJ, "04_关键帧_风格化")
 OUTDIR = os.path.join(STY, "_正式输出_v2")
 STATE = os.path.join(STY, "_style_v2_state.json")
 REFINE_FLAG = os.path.join(STY, "_face_refine_done.json")
-PY = r"%USERPROFILE%\.workbuddy\binaries\python\versions\3.13.12\python.exe"
+PY = os.path.join(os.environ.get("USERPROFILE", ""), ".workbuddy", "binaries", "python", "versions", "3.13.12", "python.exe")
 BUILD = os.path.join(PROJ, "build_episode2.py")
 EXPECT = 657
 TIMEOUT = 40 * 3600

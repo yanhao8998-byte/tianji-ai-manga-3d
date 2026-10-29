@@ -10,9 +10,10 @@
 用法:
   python build_episode.py [风格化目录] [输出mp4]
 """
+import os
 import csv, os, subprocess, sys, glob, re, json, time
 
-PROJ     = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 FF       = os.path.join(PROJ, "_tools", "ffmpeg-master-latest-win64-gpl", "bin")
 FFMPEG   = os.path.join(FF, "ffmpeg.exe")
 STORY    = os.path.join(PROJ, "02_镜头分段", "分镜表.csv")

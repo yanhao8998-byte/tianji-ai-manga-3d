@@ -19,9 +19,10 @@
 
 依赖: ffmpeg + rnnoise 模型 (_tools/rnnoise/*.rnnn)
 """
+import os
 import argparse, json, os, re, subprocess, sys, time
 
-PROJ = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 BIN = os.path.join(PROJ, "_tools", "ffmpeg-master-latest-win64-gpl", "bin")
 FFMPEG = os.path.join(BIN, "ffmpeg.exe")
 FFPROBE = os.path.join(BIN, "ffprobe.exe")

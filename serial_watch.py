@@ -17,11 +17,11 @@ import subprocess
 import sys
 import time
 
-PROJ = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 STY = os.path.join(PROJ, "04_关键帧_风格化")
 OUTDIR = os.path.join(STY, "_正式输出_v2")
 REFINE_FLAG = os.path.join(STY, "_face_refine_done.json")
-PY_MINI = r"%USERPROFILE%\.workbuddy\binaries\python\versions\3.13.12\python.exe"
+PY_MINI = os.path.join(os.environ.get("USERPROFILE", ""), ".workbuddy", "binaries", "python", "versions", "3.13.12", "python.exe")
 PY_COMFY = r"D:\AI\ComfyUI_windows_portable\python_embeded\python.exe"
 LOG = os.path.join(PROJ, "_serial_watch.log")
 EXPECT = 657

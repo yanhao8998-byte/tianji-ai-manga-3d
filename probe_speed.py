@@ -6,13 +6,14 @@
 用法:
   python probe_speed.py                 # 跑内置配置矩阵
 """
+import os
 import json, os, shutil, sys, time, urllib.request, urllib.parse, uuid
 
 HOST  = "http://127.0.0.1:8189"
 COMFY = r"D:\AI\ComfyUI_windows_portable\ComfyUI"
 CIN   = os.path.join(COMFY, "input")
 CKPT  = "v1-5-pruned-emaonly.safetensors"
-PROJ  = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 STY   = os.path.join(PROJ, "04_关键帧_风格化")
 SRC   = os.path.join(STY, "_本地试跑_CN_IPA", "f017100.png")
 REF   = os.path.join(PROJ, "00_素材", "参考图_玄鹤先生_秘境.png")

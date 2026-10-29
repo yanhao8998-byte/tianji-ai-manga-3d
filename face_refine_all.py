@@ -17,10 +17,10 @@ import time
 import urllib.parse
 import uuid
 
-sys.path.insert(0, r"<项目根>")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import local_style2 as ls2   # 复用 api()/FACE_POS/NEG/CKPT/路径常量
 
-PROJ = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 STY = os.path.join(PROJ, "04_关键帧_风格化")
 OUT = os.path.join(STY, "_正式输出_v2")
 STATE = os.path.join(STY, "_face_refine_state.json")

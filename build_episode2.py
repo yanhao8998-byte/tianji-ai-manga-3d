@@ -33,9 +33,10 @@
 
 缓存: 分段小片写在 <临时目录>/v3/ 下（与旧缓存隔离，不会误用旧参数产物）。
 """
+import os
 import csv, os, subprocess, sys, glob, re, time
 
-PROJ = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 FF = os.path.join(PROJ, "_tools", "ffmpeg-master-latest-win64-gpl", "bin")
 FFMPEG = os.path.join(FF, "ffmpeg.exe")
 FFPROBE = os.path.join(FF, "ffprobe.exe")

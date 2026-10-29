@@ -19,8 +19,8 @@ COUT   = os.path.join(COMFY, "output")
 CKPT   = "svd.safetensors"
 SUB    = "tianji_svd"
 
-IN_DIR  = sys.argv[1] if len(sys.argv) > 1 else r"<项目根>/04_关键帧_风格化/_本地试跑_CN_IPA"
-OUT_DIR = sys.argv[2] if len(sys.argv) > 2 else r"<项目根>/07_视频片段"
+IN_DIR  = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "04_关键帧_风格化/_本地试跑_CN_IPA")
+OUT_DIR = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "07_视频片段")
 W       = int(sys.argv[3]) if len(sys.argv) > 3 else 768
 H       = int(sys.argv[4]) if len(sys.argv) > 4 else 576
 FRAMES  = int(sys.argv[5]) if len(sys.argv) > 5 else 14

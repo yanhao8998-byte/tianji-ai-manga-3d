@@ -10,13 +10,14 @@
 
 依赖：本机 ComfyUI 服务已在 127.0.0.1:8188 运行。
 """
+import os
 import json, os, shutil, sys, time, urllib.request, urllib.parse, uuid, glob
 
 HOST      = "http://127.0.0.1:8188"
 COMFY     = r"D:\AI\ComfyUI_windows_portable\ComfyUI"
 COMFY_IN  = os.path.join(COMFY, "input")
 CKPT      = "v1-5-pruned-emaonly.safetensors"
-PROJ      = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 DEF_IN    = os.path.join(PROJ, "04_关键帧_风格化", "_试跑_待处理")
 DEF_OUT   = os.path.join(PROJ, "04_关键帧_风格化", "_本地试跑")
 SUB       = "tianji_trial"          # ComfyUI/input 下的子目录名

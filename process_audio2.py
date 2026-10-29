@@ -20,9 +20,10 @@
 
 依赖: ffmpeg(librubberband + afir + arnndn) + _tools/rnnoise/sh.rnnn
 """
+import os
 import argparse, json, math, os, random, re, struct, subprocess, sys, time, wave
 
-PROJ = r"<项目根>"
+PROJ = os.path.dirname(os.path.abspath(__file__))
 BIN = os.path.join(PROJ, "_tools", "ffmpeg-master-latest-win64-gpl", "bin")
 FFMPEG = os.path.join(BIN, "ffmpeg.exe")
 FFPROBE = os.path.join(BIN, "ffprobe.exe")

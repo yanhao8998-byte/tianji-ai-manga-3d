@@ -6,7 +6,7 @@
 > 🌍 **在线制作档案**：https://yanhao8998-byte.github.io/tianji-ai-manga-3d/
 > 四份实测报告 + 分镜表，浏览器直接看，无需下载文件。
 
-> 项目根目录：`<项目根>`
+> 项目根目录：`<项目根目录>`
 > 本仓库保存：脚本 · 分镜数据 · 报告 · 手册 · 进度记录
 
 ---
@@ -59,7 +59,7 @@ A 风格化 (style_all_v2.py) → B 脸部精修 (face_refine_all.py) → C 组�
 ### 改完东西要存版本
 
 ```bash
-cd <项目根>
+cd /d/天纪漫剧项目
 git status                    # 看改了什么
 git add -A
 git commit -m "说明这次改了什么"
