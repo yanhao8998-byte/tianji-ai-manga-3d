@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>《天纪》AI 漫剧 3D — 制作档案</title>
+<style>
+:root{
+  --bg:#faf7f2; --card:#ffffff; --ink:#3d3529; --sub:#8a7d68;
+  --gold:#c8963e; --gold-l:#f3e3c3; --line:#e8e0d2; --green:#5a8a4a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--ink);
+  font:15px/1.75 "Microsoft YaHei","PingFang SC",sans-serif;
+  padding:40px 4vw;max-width:980px;margin:0 auto;
+}
+h1{font-size:27px;letter-spacing:1px;margin-bottom:6px}
+h1 small{font-size:14px;color:var(--sub);font-weight:normal;margin-left:10px;letter-spacing:0}
+.lead{color:var(--sub);font-size:13.5px;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+h2{font-size:18px;margin:34px 0 12px;padding-left:11px;border-left:4px solid var(--gold)}
+h3{font-size:15.5px;margin:18px 0 6px}
+.sub{color:var(--sub);font-size:13px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:20px 24px;margin:12px 0;box-shadow:0 2px 10px rgba(120,90,40,.05);
+}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+.item{
+  display:block;color:inherit;text-decoration:none;
+  border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:10px 0;
+  background:var(--card);transition:border-color .15s,transform .15s;
+}
+.item:hover{border-color:var(--gold);transform:translateY(-1px);text-decoration:none}
+.item b{display:block;font-size:15.5px;font-weight:500;margin-bottom:3px}
+.item span{color:var(--sub);font-size:12.5px}
+.pipe{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:18px 22px;margin:12px 0;font-family:Consolas,"Courier New",monospace;
+  font-size:13px;line-height:2;color:var(--ink);overflow-x:auto;
+}
+.pipe b{color:var(--gold);font-weight:500}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 20px;min-width:112px}
+.stat b{display:block;font-size:21px;font-weight:500;color:var(--gold);line-height:1.3}
+.stat span{color:var(--sub);font-size:12px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{color:var(--sub);font-weight:500;font-size:12.5px}
+code{background:var(--gold-l);padding:2px 7px;border-radius:5px;font-family:Consolas,monospace;font-size:12.5px}
+.ok{color:var(--green);font-weight:500}
+.foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+.foot a{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<h1>《天纪》AI 漫剧 3D<small>第一集 · 制作档案</small></h1>
+<div class="lead">
+  一集 AI 漫剧的完整制作记录 —— 从关键帧风格化到成片组装的全部数据与报告。
+  本站由仓库 <a href="https://github.com/yanhao8998-byte/tianji-ai-manga-3d">yanhao8998-byte/tianji-ai-manga-3d</a> 自动发布。
+</div>
+
+<div class="stats">
+  <div class="stat"><b>74</b><span>镜头段落</span></div>
+  <div class="stat"><b>666</b><span>关键帧</span></div>
+  <div class="stat"><b>657</b><span>风格化完成</span></div>
+  <div class="stat"><b>5</b><span>阶段脚本</span></div>
+  <div class="stat"><b>4</b><span>实测报告</span></div>
+</div>
+
+<h2>制作报告</h2>
+
+<a class="item" href="pipeline-v2-report.html">
+  <b>本地 AI 管线 v2 实测报告</b>
+  <span>ControlNet + IPAdapter 本地部署实测 —— 16 张对比图，验证管线可行性</span>
+</a>
+
+<a class="item" href="composition-comparison.html">
+  <b>本地试构图对比报告</b>
+  <span>本地 ComfyUI 出图与云端方案的构图一致性对比 —— 11 张对比图</span>
+</a>
+
+<a class="item" href="quality-fix-report.html">
+  <b>画质修复试点报告</b>
+  <span>关键帧画质修复方案验证 —— 15 张对比图，含参数与耗时记录</span>
+</a>
+
+<a class="item" href="cloud-output-console.html">
+  <b>阶段 4 · 云端出图操作台</b>
+  <span>云端批量出图的操作界面与流程说明</span>
+</a>
+
+<h2>流水线</h2>
+<div class="pipe">
+<b>A</b> 风格化 style_all_v2.py &nbsp;→&nbsp; <b>B</b> 脸部精修 face_refine_all.py &nbsp;→&nbsp; <b>C</b> 组装 build_episode2.py<br>
+<span class="sub">编排者 supervisor.py（守护进程）｜ 兜底 tianji_guard.py（Windows 计划任务，每 10 分钟 + 登录时）</span>
+</div>
+
+<h2>阶段进度</h2>
+<div class="card">
+<table>
+  <thead><tr><th>阶段</th><th>脚本</th><th>状态</th></tr></thead>
+  <tbody>
+    <tr><td>预处理</td><td><code>preprocess.py</code></td><td class="ok">完成</td></tr>
+    <tr><td>选关键帧</td><td><code>shots_and_keys.py</code></td><td class="ok">完成 · 666 张</td></tr>
+    <tr><td>A 风格化</td><td><code>style_all_v2.py</code></td><td class="ok">完成 · 657 张</td></tr>
+    <tr><td>B 脸部精修</td><td><code>face_refine_all.py</code></td><td class="ok">完成</td></tr>
+    <tr><td>C 组装成片</td><td><code>build_episode2.py</code></td><td class="ok">完成</td></tr>
+    <tr><td>音频处理</td><td><code>process_audio2.py</code> / <code>local_cn_ipa.py</code></td><td class="ok">完成</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>分镜表</h2>
+<div class="card">
+<p class="sub">第一集共 74 段 / 666 张关键帧，完整时间轴与镜头清单。</p>
+<p style="margin-top:10px">
+  <a href="storyboard.txt">分镜表（纯文本）</a> &nbsp;·&nbsp;
+  <a href="storyboard.csv">分镜表（CSV，可用 Excel 打开）</a>
+</p>
+</div>
+
+<div class="foot">
+  由 <a href="https://github.com/yanhao8998-byte/tianji-ai-manga-3d">tianji-ai-manga-3d</a> 仓库 · GitHub Pages 发布<br>
+  报告中的图片均以 base64 内嵌，可离线查看
+</div>
+
+</body>
+</html>

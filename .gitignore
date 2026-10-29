@@ -132,6 +132,14 @@ System Volume Information/
 .workbuddy/cache/
 .workbuddy/tmp/
 
+# ---------- 报告 HTML（根目录副本不入库）----------
+# 这 4 份报告在 docs/ 下有英文名副本（GitHub Pages 发布用），
+# 根目录中文名版本保留在本地即可，避免仓库重复存 1.9MB。
+/本地AI管线v2实测报告.html
+/本地试构图对比报告.html
+/画质修复试点报告.html
+/阶段4_云端出图操作台.html
+
 # ---------- 编辑器 ----------
 .vscode/settings.json
 .idea/
