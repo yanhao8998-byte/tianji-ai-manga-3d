@@ -93,8 +93,10 @@ git push -u origin feature/issue-1-selfcheck
 
 ```bash
 cd /d/天纪AI漫剧3D
-python -c "import ast,glob; [ast.parse(open(f,encoding='utf-8').read()) for f in glob.glob('*.py')]" && echo "语法全通"
+python selfcheck.py          # 六项自检，退出码 0 = 通过
 ```
+
+**已装 pre-commit 钩子**，自检不通过会直接阻止提交，无需手动调用。
 
 ---
 
