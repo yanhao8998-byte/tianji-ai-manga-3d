@@ -1,0 +1,147 @@
+# ============================================================
+# 天纪漫剧项目 — Git 忽略规则
+#
+# 原则：只把「文本类」资产纳入 GitHub（脚本、分镜表、清单、手册、日志）
+#       所有媒体大文件留在本地，GitHub 单文件硬上限 100MB
+#
+# 当前项目总体积约 19GB，其中 06_成片 5.8G / _音频处理 8.8G /
+# 04_关键帧_风格化 830M / 03_关键帧_原图 372M / 01_引导视频 804M
+# —— 全部排除。纳入 Git 的文本文件约 56 个，总计不足 1MB。
+# ============================================================
+
+# ---------- 媒体文件（核心排除项）----------
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.flv
+*.wmv
+*.m4v
+
+*.mp3
+*.wav
+*.flac
+*.aac
+*.ogg
+*.m4a
+
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.bmp
+*.gif
+*.tiff
+*.psd
+*.exr
+*.hdr
+
+# ---------- 模型与素材包 ----------
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.engine
+*.bin
+*.gguf
+*.ggml
+
+# ---------- 明确排除的整目录 ----------
+# 成片与音频（最大的两块）
+06_成片/
+_音频处理/
+_acceptance/
+_验收/
+_audiotest/
+_试_道袍/
+
+# 关键帧图片（372M + 830M）
+03_关键帧_原图/
+04_关键帧_风格化/
+
+# 引导视频（804M）
+01_引导视频/
+
+# 视频片段
+07_视频片段/
+
+# 参考素材
+00_素材/
+
+# 工具链与临时目录
+_tools/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+node_modules/
+
+# 试跑目录
+_pilot2/
+_pilot/
+_trial/
+*_trial*/
+
+# ---------- 状态与临时文件 ----------
+*.pid
+*_state.json
+*_meta.json
+*_元数据.json
+*_state/
+*_status.json
+_supervisor_state.json
+_face_refine_done.json
+
+# ---------- 日志 ----------
+logs/
+*.log
+
+# 组装中间产物
+concat.txt
+*_组装临时*/
+*_temp/
+*_tmp/
+_temp/
+tmp/
+
+# ---------- 环境与密钥 ----------
+.env
+.env.*
+.venv/
+venv/
+__pycache__/
+*.secret
+secrets/
+*.key
+*.pem
+
+# ---------- 系统 ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+$RECYCLE.BIN/
+System Volume Information/
+
+# ---------- WorkBuddy 本地数据 ----------
+# 保留 memory 下的 markdown（项目笔记有价值），但排除自动化运行状态
+.workbuddy/memory/automations/
+.workbuddy/logs/
+.workbuddy/cache/
+.workbuddy/tmp/
+
+# ---------- 编辑器 ----------
+.vscode/settings.json
+.idea/
+*.swp
+
+# ============================================================
+# 说明：
+# 1. 「分镜表.txt」「关键帧清单.csv」「运动曲线.csv」这类文本数据不在
+#    排除列表内，会被纳入版本管理 —— 它们体积小但价值高。
+# 2. 如果某个 PNG 确实需要版本管理（如角色定妆图），用下面这行取消排除：
+#    !00_素材/参考图_*.png
+# 3. 新增大文件前先想一下：这个文件真的需要进 Git 吗？
+# ============================================================
