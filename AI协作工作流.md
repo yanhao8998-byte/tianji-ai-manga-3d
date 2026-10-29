@@ -57,11 +57,30 @@
 
 ## 三、命令速查
 
-### 让 AI 干活
+### ⭐ 首选：Kimi 通道（免费，不占 API Nexus 额度）
 
 ```bash
 cd /d/天纪AI漫剧3D
 
+# 一条命令，代理和密钥都自动注入
+codex-kimi "读 Issue #1，在分支 feature/issue-1-selfcheck 上实现，完成后提交并开 PR"
+
+# 换模型（Kimi 只有两个）
+codex-kimi -c model="kimi-k2.6" "你的任务"
+
+# 代码审查
+codex-kimi review --uncommitted
+```
+
+**为什么首选**：Codex 默认上游（API Nexus）余额已透支，Kimi 走 Moonshot 官方通道独立计费。
+沙箱默认 `workspace-write`，能直接改文件、跑命令。
+
+**已知限制**：Moonshot 有**组织级速率限制**（提示「1 秒后重试」），密集调用会 429。
+包装脚本已内置退避重试（最多 3 次，5/10/15 秒递增）。大批量任务之间建议间隔几秒。
+
+### 备选：API Nexus 通道（需充值）
+
+```bash
 # 认领 Issue #1 并实现
 codex exec "读 Issue #1，在分支 feature/issue-1-selfcheck 上实现，
 完成后提交并开 PR。严格遵守 AGENTS.md。"
@@ -75,6 +94,18 @@ codex exec review --uncommitted
 # 接着上次的会话继续
 codex exec resume --last "继续处理"
 ```
+
+**充值入口**：https://apinexus.dpdns.org/console/token （需网页登录，API key 无法充值）
+
+### 两条通道对比
+
+| | `codex-kimi` | `codex` |
+|---|---|---|
+| 上游 | Moonshot 官方 | API Nexus 中转站 |
+| 费用 | 独立计费，不占 Nexus 额度 | 需充值，当前透支 |
+| 可用模型 | kimi-k2.7-code、kimi-k2.6 | gpt-5.6-terra、claude-opus-5 等 20 个 |
+| 速率限制 | 有组织级 429（1 秒恢复） | 无额外限制 |
+| 代理 | 必须走 Clash | 必须走 Clash |
 
 ### 让 AI 提 PR（完整命令）
 
@@ -150,12 +181,11 @@ python selfcheck.py          # 六项自检，退出码 0 = 通过
 
 ## 六、当前阻塞项
 
-**Codex 账户额度已透支**（上游 API Nexus 报告剩余 **-$2.34**）。
-所有模型返回 `403 insufficient_user_quota`。
+**Codex 默认上游（API Nexus）额度已透支**（剩余 -$2.34），所有模型返回 `403 insufficient_user_quota`。
 
-- 影响：Codex CLI 现在无法实际调用模型。
-- 解决：到 API Nexus 充值后即可恢复。**配置已修好**（模型从失效的 `gpt-5.5` 换成了实际在售的 `gpt-5.6-terra`），充值即生效。
-- 备用：**WorkBuddy 本体不依赖这个额度**，本对话里的所有工作都是 WorkBuddy 做的，可以继续用。
+- **已绕过**：改用 **Kimi / Moonshot 通道**（`codex-kimi` 命令），实测可正常调用、能读写文件、能过自检钩子。
+- API Nexus 若要恢复：到 https://apinexus.dpdns.org/console/token 充值（**必须网页登录，API key 无法充值**）。
+- **WorkBuddy 本体不依赖任何通道额度**，本对话里的所有工作都是 WorkBuddy 做的。
 
 ---
 
