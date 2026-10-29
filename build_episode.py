@@ -12,6 +12,7 @@
 """
 import os
 import csv, os, subprocess, sys, glob, re, json, time
+import paths
 
 PROJ = os.path.dirname(os.path.abspath(__file__))
 FF       = os.path.join(PROJ, "_tools", "ffmpeg-master-latest-win64-gpl", "bin")
@@ -19,7 +20,7 @@ FFMPEG   = os.path.join(FF, "ffmpeg.exe")
 STORY    = os.path.join(PROJ, "02_镜头分段", "分镜表.csv")
 STY_DEF  = os.path.join(PROJ, "04_关键帧_风格化", "_正式输出")
 OUT_DEF  = os.path.join(PROJ, "06_成片", "天纪AI漫剧_第一集_无声.mp4")
-SRC_VID  = r"D:\B站视频下载\倪海厦-天纪\【天纪】 倪海厦主讲 24集(全)_P1_第一集(01)_B站_BV1S94y127Sv.mp4"
+SRC_VID  = paths.SRC_VIDEO
 FINAL    = os.path.join(PROJ, "06_成片", "天纪AI漫剧_第一集.mp4")
 TMP      = os.path.join(PROJ, "06_成片", "_组装临时")
 

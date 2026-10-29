@@ -12,12 +12,13 @@ import os
 import re
 import subprocess
 import sys
+import paths
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_SRC = r"D:\B站视频下载\倪海厦-天纪\【天纪】 倪海厦主讲 24集(全)_P1_第一集(01)_B站_BV1S94y127Sv.mp4"
-GUIDE_DIR = os.path.join(ROOT, "01_引导视频")
-LOG_DIR = os.path.join(ROOT, "logs")
-PREVIEW_DIR = os.path.join(ROOT, "03_关键帧_原图", "_预览")
+DEFAULT_SRC = paths.SRC_VIDEO
+GUIDE_DIR = paths.GUIDE_DIR
+LOG_DIR = paths.LOG_DIR
+PREVIEW_DIR = os.path.join(paths.KEYFRAME_DIR, "_预览")
 
 os.makedirs(GUIDE_DIR, exist_ok=True)
 os.makedirs(LOG_DIR, exist_ok=True)

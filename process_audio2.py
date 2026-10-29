@@ -22,15 +22,15 @@
 """
 import os
 import argparse, json, math, os, random, re, struct, subprocess, sys, time, wave
+import paths
 
 PROJ = os.path.dirname(os.path.abspath(__file__))
 BIN = os.path.join(PROJ, "_tools", "ffmpeg-master-latest-win64-gpl", "bin")
 FFMPEG = os.path.join(BIN, "ffmpeg.exe")
 FFPROBE = os.path.join(BIN, "ffprobe.exe")
-RN_DIR = os.path.join(PROJ, "_tools", "rnnoise")          # cwd：sh.rnnn 与 IR 都用相对名，避开盘符冒号
-WORK = os.path.join(PROJ, "_音频处理")
-SRC_DEF = (r"D:\B站视频下载\倪海厦-天纪"
-           r"\【天纪】 倪海厦主讲 24集(全)_P1_第一集(01)_B站_BV1S94y127Sv.mp4")
+RN_DIR = paths.RN_DIR          # cwd：sh.rnnn 与 IR 都用相对名，避开盘符冒号
+WORK = paths.AUDIO_DIR
+SRC_DEF = paths.SRC_VIDEO
 
 MODEL = "sh.rnnn"
 IR_NAME = "ir_hall.wav"          # 相对 RN_DIR（旧·大混响）

@@ -1,0 +1,26 @@
+#!/bin/sh
+# 提交前自检钩子 —— 有 FAIL 则阻止提交
+# 安装：git config core.hooksPath .githooks
+if [ ! -f "selfcheck.py" ]; then
+  echo "pre-commit: 未找到 selfcheck.py，跳过"
+  exit 0
+fi
+
+PY=""
+for c in python python3 py; do
+  if command -v "$c" >/dev/null 2>&1; then PY="$c"; break; fi
+done
+if [ -z "$PY" ]; then
+  echo "pre-commit: 未找到 python，跳过自检"
+  exit 0
+fi
+
+"$PY" selfcheck.py --quiet
+rc=$?
+if [ $rc -ne 0 ]; then
+  echo ""
+  echo "❌ 自检未通过，提交被阻止。"
+  echo "   修复后重试，或用 git commit --no-verify 强制提交（不建议）。"
+  exit 1
+fi
+exit 0

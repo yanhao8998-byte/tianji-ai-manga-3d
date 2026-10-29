@@ -21,15 +21,15 @@
 """
 import os
 import argparse, json, os, re, subprocess, sys, time
+import paths
 
 PROJ = os.path.dirname(os.path.abspath(__file__))
 BIN = os.path.join(PROJ, "_tools", "ffmpeg-master-latest-win64-gpl", "bin")
 FFMPEG = os.path.join(BIN, "ffmpeg.exe")
 FFPROBE = os.path.join(BIN, "ffprobe.exe")
-RN_DIR = os.path.join(PROJ, "_tools", "rnnoise")      # 作为 cwd，避免路径里的盘符冒号
-SRC_DEF = (r"D:\B站视频下载\倪海厦-天纪"
-           r"\【天纪】 倪海厦主讲 24集(全)_P1_第一集(01)_B站_BV1S94y127Sv.mp4")
-WORK = os.path.join(PROJ, "_音频处理")
+RN_DIR = paths.RN_DIR      # 作为 cwd，避免路径里的盘符冒号
+SRC_DEF = paths.SRC_VIDEO
+WORK = paths.AUDIO_DIR
 
 MODEL = "sh.rnnn"          # rnnoise 语音模型（sh=speech）
 TARGET_I, TARGET_TP, TARGET_LRA = -16.0, -1.5, 11.0
